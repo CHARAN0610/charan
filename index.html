@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bike.css">
+</head>
+<body>
+    <div class="row"></div>
+        <div class="col1">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Bikes</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Register</a></li>
+            </ul>
+        </div>
+    <div class="col2">
+        <h1>Welcome to Bike Showroom</h1>
+    </div>
+    <div class="con">
+    <div class="row1">
+    
+        <body>
+            <!-- <h1>REGISTRATION FORM</h1> -->
+            <form action="">
+                <div>
+                <label for="name" >NAME  : </label>
+                <input type="text" id="name" class="tf" required placeholder="Enter Name">
+                <div class="error"></div>
+                </div>
+                <br>
+                <div>
+                <label for="ph">PH NUM : </label>
+                <input type="number" id="ph" class="tf" required placeholder="Enter Number">
+                <div class="error"></div>
+                </div>
+                <br>
+                <div>
+                <label for="mail">EMAIL : </label>
+                <input type="email" id="mail" class="tf" required placeholder="Enter Email">
+                <div class="error"></div>
+                </div>
+                <br>
+                <div>
+                    <label>Bike Models Interested In:</label>
+                    <input type="checkbox" id="a" name="BIKE" value="Yamaha R15"><label for="a">Yamaha R15</label>
+                    <input type="checkbox" id="b" name="BIKE" value="Royal Enfield"><label for="b">Royal Enfield</label>
+                    <br>
+                    <input type="checkbox" id="c" name="BIKE" value="KTM Duke 200"><label for="c">KTM Duke 200</label>
+                    <div class="error"></div>
+                </div>
+                <br>
+                <div>
+                    <label>Bike Type:</label>
+                    <input type="radio" id="sports" name="type" value="Sports"><label for="sports">Sports</label>
+                    <input type="radio" id="cruiser" name="type" value="Cruiser"><label for="cruiser">Cruiser</label>
+                    <input type="radio" id="commuter" name="type" value="Commuter"><label for="commuter">Commuter</label>
+                    <div class="error"></div>
+                </div>
+                <br>
+                <div>
+                    <label>Preferred Showroom Location :</label>
+                    <select id="location">
+                      <option value="">Select Here</option>
+                      <option value="Chennai">Chennai</option>
+                      <option value="Bangalore">Bangalore</option>
+                      <option value="Hyderabad">Hyderabad</option>
+                    </select>
+                <div class="error"></div>
+                </div>
+                <br>
+                <div>
+               <button type="button" onclick="sumbitdata()">sumbit</button>
+               </div>
+                <br><br>
+                <script>
+                    function sumbitdata(){
+                        let names = document.getElementById("name");
+                        console.log(names);
+                        console.log(names.value);
+                        let finalname=names.value;
+
+                        let number = document.getElementById("ph");
+                        console.log(number);
+                        console.log(number.value);
+                        let finalnumber=number.value;
+
+                        let email = document.getElementById("mail");
+                        console.log(email);
+                        console.log(email.value);
+                        let finalemail=email.value
+                       
+                        let bike =document.getElementsByName("BIKE");
+                        let res="";
+                        for(let val of bike){
+                            if(val.checked){
+                                res=val.value;
+                            }
+                        }
+                        console.log(res);
+                        console.log(res.value);
+                        let finalres=res;
+                       
+                        let checks = document.getElementsByName("type")
+                       console.log(checks);
+                       let arr=[];
+                       for(let val of checks){
+                        if(val.checked){
+                            arr.push(val.value)
+                        }
+                            }
+                            console.log(arr);
+                            console.log(arr.join);
+                            
+
+                        
+                        console.log(arr);
+                        console.log(arr.value);
+                        let finalres2=arr
+
+                        let res3=document.getElementById("location");
+                        console.log(res3);
+                        console.log(res3.value);
+                        let finalres3=res3.value;
+
+
+
+                        console.log(finalname);
+                        console.log(finalnumber);
+                        console.log(finalemail);
+                        console.log(finalres);
+                        console.log(finalres2);
+                        console.log(finalres3);
+
+
+
+                        if(finalname===''){
+                           setError( names,"name is empty")
+                        }
+                        else{
+                            setSuccess(names);
+                         }
+
+
+
+                        if(finalnumber==='')
+                        {
+                           setError(number,"number is empty")
+                        }
+                        else{
+                            setSuccess(number);
+                         }
+
+
+
+                        if(finalemail===''){
+                           setError(email,"Email is empty")
+                        }
+                        else{
+                            setSuccess(email);
+                         }
+
+
+
+                        if(finalres==='')
+                        {
+                            setError(bike[0],"name is empty")
+                        }
+                        else{
+                            setSuccess(bike[0]);
+                         }
+
+
+    
+                        if(finalres2=='')
+                        {
+                        let checks = document.getElementsByName("type")
+                           setError( checks[0],"name is empty")
+                        }
+                        else{
+                            setSuccess(checks[0]);
+                         }
+
+
+
+                         if(finalres3==='')
+                        {
+                            let res3=document.getElementById("drops");
+                           setError( res3[0],"drop is empty")
+                        }
+                        else{
+                            setSuccess(res3[0]);
+                         }
+
+
+
+}
+    function setError(element,msg){
+        let parents=element.parentElement;
+        let resfinal=parents.querySelector(".error");
+        resfinal.innerText=msg;
+    }
+
+    function setSuccess(element){
+        let parents=element.parentElement;
+        let resfinal=parents.querySelector(".error");
+        resfinal.innerText='';
+    }
+
+
+
+</script>
+        
+            </form>
+        </body>
+    </div>
+</div>
+</body>
+</html>
